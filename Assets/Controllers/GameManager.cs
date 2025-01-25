@@ -14,6 +14,6 @@ public class GameManager : MonoBehaviour
 
     void Start() 
     {
-        allInteractionComponents = FindObjectsOfType<InteractionComponent>();
+        allInteractionComponents = FindObjectsByType<InteractionComponent>(FindObjectsSortMode.None);
     }
 }
