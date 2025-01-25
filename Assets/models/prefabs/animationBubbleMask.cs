@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class animationBubbleMask : MonoBehaviour
 {
+    public string id;
     [SerializeField] private Vector3 targetScale = new Vector3(9f, 9f, 9f);
     [SerializeField] private float scaleRate = 10f;
     private bool hasReachedTarget = false;

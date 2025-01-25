@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InteractionComponent : MonoBehaviour
 {
+    public string id;
     public bool canInteract = false;
     public bool wasCollected = false;
     private bool isPlayerClose = false;
@@ -54,6 +55,7 @@ public class InteractionComponent : MonoBehaviour
         {
             wasCollected = true;
             showUI();
+            GameManager.instance.bubblesDictionary[id].isOpen = true;
         }
     }
 }
