@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - canHoldToInteract
+  - mask
   layers:
   - Default
   - TransparentFX

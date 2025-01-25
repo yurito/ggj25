@@ -2,26 +2,51 @@ using UnityEngine;
 
 public class animationBubbleMask : MonoBehaviour
 {
-    void Start()
+    [SerializeField] private Vector3 targetScale = new Vector3(9f, 9f, 9f);
+    [SerializeField] private float scaleRate = 10f;
+    private bool hasReachedTarget = false;
+    private Vector3 zeroScale = Vector3.zero;
+    private Transform cachedTransform;
+
+    void Awake()
     {
-        transform.localScale = Vector3.zero;
+        cachedTransform = transform;
     }
 
-    [SerializeField] private Vector3 targetScale = new Vector3(50f, 50f, 50f);
-    [SerializeField] private float scaleRate = 1f;
-    private bool hasReachedTarget = false;
+    void Start()
+    {
+        cachedTransform.localScale = zeroScale;
+    }
 
+    public bool isOpen = false;
 
-    void Update()
+    private void Animate()
     {
         if (!hasReachedTarget)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, scaleRate * Time.deltaTime);
-            
-            if (transform.localScale == targetScale)
+            if (Vector3.Distance(cachedTransform.localScale, targetScale) < 0.01f)
             {
+                cachedTransform.localScale = targetScale;
                 hasReachedTarget = true;
+                return;
             }
+            cachedTransform.localScale = Vector3.MoveTowards(cachedTransform.localScale, targetScale, scaleRate * Time.deltaTime);
         }
+    }
+
+    void Update()
+    {
+        if(isOpen) 
+        {
+            Animate();
+            return;
+        }
+        cachedTransform.localScale = zeroScale;
+        hasReachedTarget = false;
+    }
+
+    public string GetComponentName()
+    {
+        return gameObject.name;
     }
 }
