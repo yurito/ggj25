@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         if (component.canInteract && !component.wasCollected)
         {
-            interact(component);
+            // interact(component);
         }
 
     }

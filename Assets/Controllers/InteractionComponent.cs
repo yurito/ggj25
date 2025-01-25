@@ -13,13 +13,13 @@ public class InteractionComponent : MonoBehaviour
     void Start()
     {
         showUI();
-
     }
 
     void Update()
     {
         calculateConditions();
         showUI();
+        getInput();
     }
 
     void calculateConditions()
@@ -46,5 +46,14 @@ public class InteractionComponent : MonoBehaviour
     {
         bool show = canInteract && isPlayerClose && !wasCollected;
         UI.SetActive(show);
+    }
+
+    public void getInput()
+    {
+        if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
+        {
+            wasCollected = true;
+            showUI();
+        }
     }
 }
