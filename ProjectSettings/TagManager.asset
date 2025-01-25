@@ -6,6 +6,11 @@ TagManager:
   tags:
   - canHoldToInteract
   - mask
+  - talkingName
+  - speechManager
+  - talkingLabel
+  - talkingContent
+  - closeBtn
   layers:
   - Default
   - TransparentFX
