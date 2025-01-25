@@ -10,13 +10,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAnimationController playerAnimationController;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
@@ -46,29 +44,33 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        Debug.Log("x: " + x + " y: " + y);
-
-        if (x == 0 && y == 0) {
+        if (x == 0 && y == 0)
+        {
             playerAnimationController.PlayAnimation("Idle");
-        } else if (y > 0) {
+        }
+        else if (y > 0)
+        {
             playerAnimationController.PlayAnimation("Walking Back");
-        } else if (y <= 0) {
+        }
+        else if (y <= 0)
+        {
             playerAnimationController.PlayAnimation("Walking");
         }
+    }
 
-        // if (x == 0 && y == 0)
-        // {
-        //     Debug.Log("");
-        //     playerAnimationController.PlayAnimation("Idle");
-        // }
-        // else if (y < 0)
-        // {
-        //     playerAnimationController.PlayAnimation("Walking");
-        // }
-        // else if (y > 0)
-        // {
-        //     playerAnimationController.PlayAnimation("Walking Back");
-        // }
+    void OnTriggerEnter(Collider other)
+    {
+        InteractionComponent component = other.GetComponent<InteractionComponent>();
+        if (component == null)
+        {
+            return;
+        }
+
+        if (component.canInteract)
+        {
+            Debug.Log("Can Interact " + component.name);
+        }
 
     }
+
 }
