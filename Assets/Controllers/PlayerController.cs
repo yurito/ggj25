@@ -66,11 +66,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        Debug.Log("Interacting with " + component.name);
         component.setIsPlayerClose(true);
 
         if (component.canInteract && !component.wasCollected)
         {
-            // interact(component);
+            interact(component);
         }
 
     }
