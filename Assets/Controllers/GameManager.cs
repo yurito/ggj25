@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         allInteractionComponents = FindObjectsOfType<InteractionComponent>();
         animationBubbleMask[] animationBubbleMask = FindObjectsOfType<animationBubbleMask>();
 
@@ -22,5 +23,6 @@ public class GameManager : MonoBehaviour
         {
             bubblesDictionary.Add(item.id, item);
         }
+
     }
 }
