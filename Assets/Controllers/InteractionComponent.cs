@@ -24,14 +24,15 @@ public class InteractionComponent : MonoBehaviour
 
     void calculateConditions()
     {
+        canInteract = false;
         foreach (InteractionComponent dependence in dependences)
         {
-            if (!dependence.wasCollected || dependence.canInteract)
+            if (!dependence.wasCollected)
             {
                 return;
             }
         }
-
+        
         canInteract = true;
     }
 
