@@ -4,12 +4,14 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Canvas))]
 public class SpeechManager : MonoBehaviour
 {
+    public string id;
     [SerializeField] private Canvas canvasObject;
-    [SerializeField] private string id;
-    [SerializeField] private bool showText;
+    [SerializeField] public bool showText;
 
     private bool previousShowState;
     private Canvas targetCanvas;
+
+    public Button button;
 
     void Awake()
     {
@@ -19,6 +21,8 @@ public class SpeechManager : MonoBehaviour
         targetCanvas = canvasObject;
         previousShowState = showText;
         UpdateCanvasState();
+
+        button.onClick.AddListener(OnCLick);
     }
 
     void Update()
@@ -34,5 +38,10 @@ public class SpeechManager : MonoBehaviour
     {
         if (targetCanvas != null)
             targetCanvas.enabled = showText;
+    }
+
+    void OnCLick()
+    {
+        GameManager.instance.CloseSpeech(id);
     }
 }

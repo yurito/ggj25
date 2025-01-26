@@ -7,6 +7,7 @@ public class InteractionComponent : MonoBehaviour
     public bool canInteract = false;
     public bool wasCollected = false;
     private bool isPlayerClose = false;
+    private Outline outline;
 
     public InteractionComponent[] dependences;
     public GameObject UI;
@@ -14,6 +15,12 @@ public class InteractionComponent : MonoBehaviour
     void Start()
     {
         showUI();
+        outline = gameObject.AddComponent<Outline>();
+        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline.OutlineColor = Color.yellow;
+        outline.OutlineWidth = 5f;
+
+        outline.enabled = false;
     }
 
     void Update()
@@ -21,6 +28,11 @@ public class InteractionComponent : MonoBehaviour
         calculateConditions();
         showUI();
         getInput();
+
+        if (canInteract && !wasCollected)
+        {
+            outline.enabled = true;
+        }
     }
 
     void calculateConditions()
@@ -33,7 +45,7 @@ public class InteractionComponent : MonoBehaviour
                 return;
             }
         }
-        
+
         canInteract = true;
     }
 
@@ -54,8 +66,8 @@ public class InteractionComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
         {
             wasCollected = true;
+            GameManager.instance.OpenSpeech(id);
             showUI();
-            GameManager.instance.bubblesDictionary[id].isOpen = true;
         }
     }
 }

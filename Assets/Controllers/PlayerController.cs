@@ -5,21 +5,45 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float groundDistance;
     public LayerMask terrainLayer;
-    public Rigidbody rb;
+    public Rigidbody rigidBody;
     public SpriteRenderer spriteRenderer;
-
     public PlayerAnimationController playerAnimationController;
+
+    private string direction = "Front";
 
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rigidBody = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        RaycastHit hit;
+        if (!GameManager.instance.activeInput)
+        {
+            PlayIdleAnimation();
+            return;
+        }
+
+        AdjustPositionToTerrain();
+        HandleMovement();
+    }
+
+    private void PlayIdleAnimation()
+    {
+        if (direction == "Front")
+        {
+            playerAnimationController.PlayAnimation("Idle Front");
+        }
+        else if (direction == "Back")
+        {
+            playerAnimationController.PlayAnimation("Idle Back");
+        }
+    }
+
+    private void AdjustPositionToTerrain()
+    {
         Vector3 castPos = transform.position;
-        if (Physics.Raycast(castPos, transform.up, out hit, Mathf.Infinity, terrainLayer))
+        if (Physics.Raycast(castPos, transform.up, out RaycastHit hit, Mathf.Infinity, terrainLayer))
         {
             if (hit.collider != null)
             {
@@ -28,70 +52,60 @@ public class PlayerController : MonoBehaviour
                 transform.position = movePos;
             }
         }
+    }
 
+    private void HandleMovement()
+    {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 moveDir = new Vector3(x, 0, y);
-        rb.linearVelocity = moveDir * speed;
+        rigidBody.linearVelocity = moveDir * speed;
 
-        if (x != 0 && x < 0)
+        UpdateSpriteDirection(x);
+        UpdateAnimation(x, y);
+    }
+
+    private void UpdateSpriteDirection(float x)
+    {
+        if (x != 0)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = x > 0;
         }
-        else if (x != 0 && x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
+    }
 
-
+    private void UpdateAnimation(float x, float y)
+    {
         if (x == 0 && y == 0)
         {
-            playerAnimationController.PlayAnimation("Idle");
+            PlayIdleAnimation();
         }
         else if (y > 0)
         {
+            direction = "Back";
             playerAnimationController.PlayAnimation("Walking Back");
         }
         else if (y <= 0)
         {
-            playerAnimationController.PlayAnimation("Walking");
+            direction = "Front";
+            playerAnimationController.PlayAnimation("Walking Front");
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        InteractionComponent component = other.GetComponent<InteractionComponent>();
-        if (component == null)
+        InteractionComponent interactionComponent = other.GetComponent<InteractionComponent>();
+        if (interactionComponent != null)
         {
-            return;
+            interactionComponent.setIsPlayerClose(true);
         }
-
-        Debug.Log("Interacting with " + component.name);
-        component.setIsPlayerClose(true);
-
-        if (component.canInteract && !component.wasCollected)
-        {
-            // interact(component);
-        }
-
     }
 
     void OnTriggerExit(Collider other)
     {
         InteractionComponent component = other.GetComponent<InteractionComponent>();
-        if (component == null)
+        if (component != null)
         {
-            return;
+            component.setIsPlayerClose(false);
         }
-
-        component.setIsPlayerClose(false);
-    }
-
-    void interact(InteractionComponent component)
-    {
-        if (component == null) return;
-        component.wasCollected = true;
-        component.canInteract = false;
-        Debug.Log("Can Interact " + component.name);
     }
 }
