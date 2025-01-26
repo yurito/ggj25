@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public InteractionComponent[] allInteractionComponents;
     public Dictionary<string, animationBubbleMask> bubblesDictionary = new Dictionary<string, animationBubbleMask>();
-    public Dictionary<string, SpeechManager> speechDictionary = new Dictionary<string, SpeechManager>();
+    public Dictionary<string, focusObject> objectDictionary = new Dictionary<string, focusObject>();
     public bool activeInput = true;
 
     void Awake()
@@ -26,37 +26,37 @@ public class GameManager : MonoBehaviour
             bubblesDictionary.Add(item.id, item);
         }
 
-        SpeechManager[] speechManagers = FindObjectsOfType<SpeechManager>();
-        foreach (var item in speechManagers)
+        focusObject[] objectManagers = FindObjectsOfType<focusObject>();
+        foreach (var item in objectManagers)
         {
-            speechDictionary.Add(item.id, item);
+            objectDictionary.Add(item.id, item);
         }
     }
 
-    public void OpenSpeech(string id)
+    public void OpenObject(string id)
     {
-        SpeechManager speech = speechDictionary[id];
-        if (speech == null)
+        focusObject @object = objectDictionary[id];
+        if (@object == null)
         {
             return;
         }
 
-        speech.showText = true;
+        @object.toggleCameraState = true;
         activeInput = false;
     }
 
-    public void CloseSpeech(string id)
+    public void CloseObject(string id)
     {
-        SpeechManager speech = speechDictionary[id];
+        focusObject @object = objectDictionary[id];
         animationBubbleMask bubble = bubblesDictionary[id];
 
-        if (speech == null || bubble == null)
+        if (@object == null || bubble == null)
         {
             return;
         }
 
         activeInput = true;
         bubble.isOpen = true;
-        speech.showText = false;
+        @object.toggleCameraState = false;
     }
 }

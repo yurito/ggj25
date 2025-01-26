@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class animationBubbleMask : MonoBehaviour
@@ -37,7 +38,12 @@ public class animationBubbleMask : MonoBehaviour
 
     void Update()
     {
-        if(isOpen) 
+        if (id == "letter" && isOpen)
+        {
+            StartCoroutine("Show");
+        }
+
+        if (isOpen)
         {
             Animate();
             return;
@@ -49,5 +55,14 @@ public class animationBubbleMask : MonoBehaviour
     public string GetComponentName()
     {
         return gameObject.name;
+    }
+
+    private IEnumerator Show()
+    {
+        Debug.Log("Showing final screen");
+        yield return new WaitForSeconds(5f);
+        Debug.Log("Final screen shown");
+        GameObject.FindGameObjectWithTag("FinalScreen").GetComponent<Canvas>().enabled = true;
+        GameManager.instance.activeInput = false;
     }
 }

@@ -38,6 +38,6 @@ public class SpeechManager : MonoBehaviour
 
     void OnCLick()
     {
-        GameManager.instance.CloseSpeech(id);
+        // GameManager.instance.CloseObject(id);
     }
 }

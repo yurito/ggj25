@@ -133,11 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97271f0a0a4754959b15ce58b9ce50f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: picture
   focusObjectPrefab: {fileID: 8038175403876196197, guid: 38791a82f285546b1b35523998a92d9e, type: 3}
   focusObjectCaption: {fileID: 3426249362508780787}
   newCaptionText: "A gente parecia t\xE3o feliz nesse dia. Bem antes de tudo acontecer."
   focusPoint: {fileID: 3441875456204197633}
-  toggleCameraState: 1
+  toggleCameraState: 0
+  rotationSpeed: 18.1
 --- !u!1 &2299871625792527127
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2299871625792527127}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1648379, y: -0.1330062, z: 0.022439282, w: 0.9770539}
+  m_LocalRotation: {x: 0.16483544, y: -0.13300607, z: 0.02243899, w: 0.97705436}
   m_LocalPosition: {x: 0.171, y: 1.104, z: -3.037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -293,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 2506996307036515109}
   serializedVersion: 2
   m_LocalRotation: {x: -0.012552977, y: 0.9993533, z: -0.025396943, w: -0.022145249}
-  m_LocalPosition: {x: 0.011589237, y: -0.050100245, z: 0.3408668}
+  m_LocalPosition: {x: 0.011589237, y: -0.050100245, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

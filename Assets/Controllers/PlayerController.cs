@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,8 +22,10 @@ public class PlayerController : MonoBehaviour
         if (!GameManager.instance.activeInput)
         {
             PlayIdleAnimation();
+            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
             return;
         }
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         AdjustPositionToTerrain();
         HandleMovement();

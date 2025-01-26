@@ -68,7 +68,7 @@ public class InteractionComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
         {
             wasCollected = true;
-            GameManager.instance.OpenSpeech(id);
+            GameManager.instance.OpenObject(id);
             ShowUI();
         }
     }

@@ -16,6 +16,7 @@ TagManager:
   - focusCam2
   - focusCam3
   - focusObject
+  - FinalScreen
   layers:
   - Default
   - TransparentFX

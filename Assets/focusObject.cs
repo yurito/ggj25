@@ -8,7 +8,7 @@ public class focusObject : MonoBehaviour
     [SerializeField] private GameObject focusObjectCaption;
     [SerializeField] private string newCaptionText;
     [SerializeField] private Transform focusPoint;
-    [SerializeField] private bool toggleCameraState = false;
+    [SerializeField] public bool toggleCameraState = false;
     [SerializeField] private float rotationSpeed = 18.1f;
 
     private TextMeshPro captionText;
@@ -32,8 +32,6 @@ public class focusObject : MonoBehaviour
 
         if (dimmingObj != null)
             dimmingObj.GetComponent<SpriteRenderer>().enabled = false;
-
-
     }
 
     void Update()
@@ -47,6 +45,11 @@ public class focusObject : MonoBehaviour
         if (spawnedObject != null)
         {
             spawnedObject.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
+        }
+
+        if (Input.GetKeyUp(KeyCode.E) && toggleCameraState)
+        {
+            GameManager.instance.CloseObject(id);
         }
     }
 
