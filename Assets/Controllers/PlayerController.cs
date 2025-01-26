@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         InteractionComponent interactionComponent = other.GetComponent<InteractionComponent>();
         if (interactionComponent != null)
         {
-            interactionComponent.setIsPlayerClose(true);
+            interactionComponent.SetIsPlayerClose(true);
         }
     }
 
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         InteractionComponent component = other.GetComponent<InteractionComponent>();
         if (component != null)
         {
-            component.setIsPlayerClose(false);
+            component.SetIsPlayerClose(false);
         }
     }
 }

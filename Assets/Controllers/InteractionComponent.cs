@@ -14,28 +14,30 @@ public class InteractionComponent : MonoBehaviour
 
     void Start()
     {
-        showUI();
-        outline = gameObject.AddComponent<Outline>();
-        outline.OutlineMode = Outline.Mode.OutlineAll;
-        outline.OutlineColor = Color.yellow;
-        outline.OutlineWidth = 5f;
-
-        outline.enabled = false;
+        ShowUI();
+        ShowOutline();
     }
 
     void Update()
     {
-        calculateConditions();
-        showUI();
-        getInput();
+        CalculateConditions();
+        ShowUI();
+        GetInput();
 
-        if (canInteract && !wasCollected)
-        {
-            outline.enabled = true;
-        }
+        outline.enabled = canInteract && !wasCollected;
     }
 
-    void calculateConditions()
+    private void ShowOutline()
+    {
+        outline = gameObject.AddComponent<Outline>();
+        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline.OutlineColor = Color.yellow;
+        outline.OutlineWidth = 2f;
+
+        outline.enabled = false;
+    }
+
+    void CalculateConditions()
     {
         canInteract = false;
         foreach (InteractionComponent dependence in dependences)
@@ -49,25 +51,25 @@ public class InteractionComponent : MonoBehaviour
         canInteract = true;
     }
 
-    public void setIsPlayerClose(bool value)
+    public void SetIsPlayerClose(bool value)
     {
         isPlayerClose = value;
-        showUI();
+        ShowUI();
     }
 
-    public void showUI()
+    public void ShowUI()
     {
         bool show = canInteract && isPlayerClose && !wasCollected;
         UI.SetActive(show);
     }
 
-    public void getInput()
+    public void GetInput()
     {
         if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
         {
             wasCollected = true;
             GameManager.instance.OpenSpeech(id);
-            showUI();
+            ShowUI();
         }
     }
 }
