@@ -281,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8266574209056865039
 Transform:
   m_ObjectHideFlags: 0
@@ -452,6 +452,7 @@ MonoBehaviour:
   focusObjectCaption: {fileID: 3816580312724171749}
   newCaptionText: Esse casaco era o favorito dele...
   focusPoint: {fileID: 457363960152407909}
+  toggleCameraState: 0
 --- !u!1 &5943623749728674184
 GameObject:
   m_ObjectHideFlags: 0
