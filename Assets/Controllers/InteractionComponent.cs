@@ -54,8 +54,8 @@ public class InteractionComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
         {
             wasCollected = true;
+            GameManager.instance.speechDictionary[id].showText = true;
             showUI();
-            GameManager.instance.bubblesDictionary[id].isOpen = true;
         }
     }
 }

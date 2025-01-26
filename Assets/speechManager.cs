@@ -4,9 +4,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Canvas))]
 public class SpeechManager : MonoBehaviour
 {
+    [SerializeField] public string id;
     [SerializeField] private Canvas canvasObject;
-    [SerializeField] private string id;
-    [SerializeField] private bool showText;
+    [SerializeField] public bool showText;
 
     private bool previousShowState;
     private Canvas targetCanvas;
