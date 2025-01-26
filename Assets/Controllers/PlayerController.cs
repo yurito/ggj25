@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.activeInput)
+        {
+            return;
+        }
         RaycastHit hit;
         Vector3 castPos = transform.position;
         if (Physics.Raycast(castPos, transform.up, out hit, Mathf.Infinity, terrainLayer))
@@ -66,14 +70,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("Interacting with " + component.name);
         component.setIsPlayerClose(true);
-
-        if (component.canInteract && !component.wasCollected)
-        {
-            // interact(component);
-        }
-
     }
 
     void OnTriggerExit(Collider other)
@@ -92,6 +89,5 @@ public class PlayerController : MonoBehaviour
         if (component == null) return;
         component.wasCollected = true;
         component.canInteract = false;
-        Debug.Log("Can Interact " + component.name);
     }
 }

@@ -23,7 +23,7 @@ public class SpeechManager : MonoBehaviour
         targetCanvas = canvasObject;
         previousShowState = showText;
         UpdateCanvasState();
-        
+
         button.onClick.AddListener(OnCLick);
     }
 
@@ -44,10 +44,8 @@ public class SpeechManager : MonoBehaviour
         }
     }
 
-    void OnCLick() 
+    void OnCLick()
     {
-        Debug.Log("Next");
-        GameManager.instance.speechDictionary[id].showText = false;
-        GameManager.instance.bubblesDictionary[id].isOpen = true;
+        GameManager.instance.closeSpeech(id);
     }
 }

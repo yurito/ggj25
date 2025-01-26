@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public InteractionComponent[] allInteractionComponents;
     public Dictionary<string, animationBubbleMask> bubblesDictionary = new Dictionary<string, animationBubbleMask>();
     public Dictionary<string, SpeechManager> speechDictionary = new Dictionary<string, SpeechManager>();
+    public bool activeInput = true;
 
     void Awake()
     {
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         allInteractionComponents = FindObjectsOfType<InteractionComponent>();
 
         animationBubbleMask[] animationBubbleMask = FindObjectsOfType<animationBubbleMask>();
@@ -30,6 +30,32 @@ public class GameManager : MonoBehaviour
         {
             speechDictionary.Add(item.id, item);
         }
+    }
 
+    public void openSpeech(string id)
+    {
+        SpeechManager speech = speechDictionary[id];
+        if (speech == null)
+        {
+            return;
+        }
+
+        speech.showText = true;
+        activeInput = false;
+    }
+
+    public void closeSpeech(string id)
+    {
+        SpeechManager speech = speechDictionary[id];
+        animationBubbleMask bubble = bubblesDictionary[id];
+
+        if (speech == null || bubble == null)
+        {
+            return;
+        }
+
+        activeInput = true;
+        bubble.isOpen = true;
+        speech.showText = false;
     }
 }

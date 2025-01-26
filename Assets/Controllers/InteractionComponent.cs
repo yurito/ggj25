@@ -33,7 +33,7 @@ public class InteractionComponent : MonoBehaviour
                 return;
             }
         }
-        
+
         canInteract = true;
     }
 
@@ -54,7 +54,7 @@ public class InteractionComponent : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && canInteract && isPlayerClose && !wasCollected)
         {
             wasCollected = true;
-            GameManager.instance.speechDictionary[id].showText = true;
+            GameManager.instance.openSpeech(id);
             showUI();
         }
     }
