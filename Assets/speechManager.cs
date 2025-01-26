@@ -46,6 +46,6 @@ public class SpeechManager : MonoBehaviour
 
     void OnCLick()
     {
-        GameManager.instance.closeSpeech(id);
+        GameManager.instance.CloseSpeech(id);
     }
 }

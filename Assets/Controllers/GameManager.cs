@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void openSpeech(string id)
+    public void OpenSpeech(string id)
     {
         SpeechManager speech = speechDictionary[id];
         if (speech == null)
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         activeInput = false;
     }
 
-    public void closeSpeech(string id)
+    public void CloseSpeech(string id)
     {
         SpeechManager speech = speechDictionary[id];
         animationBubbleMask bubble = bubblesDictionary[id];
@@ -57,5 +58,14 @@ public class GameManager : MonoBehaviour
         activeInput = true;
         bubble.isOpen = true;
         speech.showText = false;
+        IsAllBubblesOpened();
+    }
+
+    private void IsAllBubblesOpened()
+    {
+        if (bubblesDictionary.Values.Count(x => x.isOpen) == (bubblesDictionary.Count - 1))
+        {
+            bubblesDictionary["final"].isOpen = true;
+        }
     }
 }
