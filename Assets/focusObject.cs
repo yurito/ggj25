@@ -47,7 +47,7 @@ public class focusObject : MonoBehaviour
             spawnedObject.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && toggleCameraState)
+        if (Input.GetKeyUp(KeyCode.Q) && toggleCameraState)
         {
             GameManager.instance.CloseObject(id);
         }

@@ -35,9 +35,4 @@ public class SpeechManager : MonoBehaviour
         if (targetCanvas != null)
             targetCanvas.enabled = showText;
     }
-
-    void OnCLick()
-    {
-        // GameManager.instance.CloseObject(id);
-    }
 }
