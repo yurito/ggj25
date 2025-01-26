@@ -7,7 +7,6 @@ public class PlayerSFX : MonoBehaviour
 
     public void PlayerSound()
     {
-        Debug.Log("Player Sound");
         audioSource.Play();
     }
 
