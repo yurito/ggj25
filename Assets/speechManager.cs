@@ -14,9 +14,7 @@ public class SpeechManager : MonoBehaviour
     void Awake()
     {
         if (canvasObject == null)
-        {
             canvasObject = GetComponent<Canvas>();
-        }
 
         targetCanvas = canvasObject;
         previousShowState = showText;
@@ -35,8 +33,6 @@ public class SpeechManager : MonoBehaviour
     private void UpdateCanvasState()
     {
         if (targetCanvas != null)
-        {
             targetCanvas.enabled = showText;
-        }
     }
 }

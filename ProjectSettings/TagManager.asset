@@ -11,6 +11,11 @@ TagManager:
   - talkingLabel
   - talkingContent
   - closeBtn
+  - overlayCam
+  - focusCam1
+  - focusCam2
+  - focusCam3
+  - focusObject
   layers:
   - Default
   - TransparentFX
