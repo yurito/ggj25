@@ -91,8 +91,14 @@ public class focusObject : MonoBehaviour
     {
         if (parentCamera != null)
         {
+            foreach (Transform child in this.transform)
+            {
+                child.gameObject.SetActive(toggleCameraState);
+            }
             if (toggleCameraState)
             {
+
+
                 foreach (var cam in Camera.allCameras)
                 {
                     if (cam != parentCamera)
@@ -127,6 +133,9 @@ public class focusObject : MonoBehaviour
 
                 if (dimmingObj != null)
                     dimmingObj.GetComponent<SpriteRenderer>().enabled = false;
+
+
+
                 parentCamera.enabled = false;
             }
         }
