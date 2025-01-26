@@ -3,11 +3,13 @@ using TMPro;
 
 public class focusObject : MonoBehaviour
 {
+    public string id;
     [SerializeField] private GameObject focusObjectPrefab;
     [SerializeField] private GameObject focusObjectCaption;
     [SerializeField] private string newCaptionText;
     [SerializeField] private Transform focusPoint;
     [SerializeField] private bool toggleCameraState = false;
+    [SerializeField] private float rotationSpeed = 18.1f;
 
     private TextMeshPro captionText;
     private GameObject spawnedObject;
@@ -15,6 +17,8 @@ public class focusObject : MonoBehaviour
     private bool lastCameraState;
     private static Camera activeCamera;
     private GameObject smartphoneObject;
+    private GameObject dimmingObj;
+
 
     void Start()
     {
@@ -24,15 +28,25 @@ public class focusObject : MonoBehaviour
         CacheSmartphoneReference();
         lastCameraState = toggleCameraState;
         UpdateCameraState();
+        dimmingObj = transform.parent?.Find("dimming")?.gameObject;
+
+        if (dimmingObj != null)
+            dimmingObj.GetComponent<SpriteRenderer>().enabled = false;
+
+
     }
 
     void Update()
     {
-        UpdateCaption();
         if (toggleCameraState != lastCameraState)
         {
             UpdateCameraState();
             lastCameraState = toggleCameraState;
+        }
+
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
         }
     }
 
@@ -83,6 +97,8 @@ public class focusObject : MonoBehaviour
                 {
                     if (cam != parentCamera)
                         cam.enabled = false;
+
+
                 }
                 if (this.gameObject.tag == "focusCam3")
                 {
@@ -95,7 +111,8 @@ public class focusObject : MonoBehaviour
                         smartphoneObject.SetActive(false);
                 }
 
-
+                if (dimmingObj != null)
+                    dimmingObj.GetComponent<SpriteRenderer>().enabled = true;
 
                 parentCamera.enabled = true;
             }
@@ -108,6 +125,8 @@ public class focusObject : MonoBehaviour
                 if (smartphoneObject != null)
                     smartphoneObject.SetActive(true);
 
+                if (dimmingObj != null)
+                    dimmingObj.GetComponent<SpriteRenderer>().enabled = false;
                 parentCamera.enabled = false;
             }
         }
