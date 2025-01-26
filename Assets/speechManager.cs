@@ -11,8 +11,6 @@ public class SpeechManager : MonoBehaviour
     private bool previousShowState;
     private Canvas targetCanvas;
 
-    public Button button;
-
     void Awake()
     {
         if (canvasObject == null)
@@ -21,8 +19,6 @@ public class SpeechManager : MonoBehaviour
         targetCanvas = canvasObject;
         previousShowState = showText;
         UpdateCanvasState();
-
-        button.onClick.AddListener(OnCLick);
     }
 
     void Update()
