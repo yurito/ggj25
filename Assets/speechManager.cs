@@ -11,6 +11,8 @@ public class SpeechManager : MonoBehaviour
     private bool previousShowState;
     private Canvas targetCanvas;
 
+    public Button button;
+
     void Awake()
     {
         if (canvasObject == null)
@@ -21,6 +23,8 @@ public class SpeechManager : MonoBehaviour
         targetCanvas = canvasObject;
         previousShowState = showText;
         UpdateCanvasState();
+        
+        button.onClick.AddListener(OnCLick);
     }
 
     void Update()
@@ -38,5 +42,12 @@ public class SpeechManager : MonoBehaviour
         {
             targetCanvas.enabled = showText;
         }
+    }
+
+    void OnCLick() 
+    {
+        Debug.Log("Next");
+        GameManager.instance.speechDictionary[id].showText = false;
+        GameManager.instance.bubblesDictionary[id].isOpen = true;
     }
 }
