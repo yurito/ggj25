@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         AdjustPositionToTerrain();
         HandleMovement();
     }
-    
+
     private void PlayIdleAnimation()
     {
         if (direction == "Front")
@@ -93,10 +93,10 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        InteractionComponent component = other.GetComponent<InteractionComponent>();
-        if (component != null)
+        InteractionComponent interactionComponent = other.GetComponent<InteractionComponent>();
+        if (interactionComponent != null)
         {
-            component.setIsPlayerClose(true);
+            interactionComponent.setIsPlayerClose(true);
         }
     }
 

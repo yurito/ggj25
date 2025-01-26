@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2367725665816786728}
   - component: {fileID: 1243740855797883081}
   - component: {fileID: 5456592360614240}
-  - component: {fileID: 5952919317732733821}
   m_Layer: 0
   m_Name: Interectable Component
   m_TagString: Untagged
@@ -150,24 +149,6 @@ MonoBehaviour:
   wasCollected: 0
   dependences: []
   UI: {fileID: 7253808064950571461}
---- !u!114 &5952919317732733821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891226875312326465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &7132630018919159126
 GameObject:
   m_ObjectHideFlags: 0
