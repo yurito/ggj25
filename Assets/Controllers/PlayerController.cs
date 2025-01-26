@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask terrainLayer;
     public Rigidbody rb;
     public SpriteRenderer spriteRenderer;
-
     public PlayerAnimationController playerAnimationController;
+
+    private string direction = "Front";
 
     void Start()
     {
@@ -40,25 +41,34 @@ public class PlayerController : MonoBehaviour
 
         if (x != 0 && x < 0)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         else if (x != 0 && x > 0)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
 
 
         if (x == 0 && y == 0)
         {
-            playerAnimationController.PlayAnimation("Idle");
+            if (direction == "Front")
+            {
+                playerAnimationController.PlayAnimation("Idle Front");
+            }
+            else if (direction == "Back")
+            {
+                playerAnimationController.PlayAnimation("Idle Back");
+            }
         }
         else if (y > 0)
         {
+            direction = "Back";
             playerAnimationController.PlayAnimation("Walking Back");
         }
         else if (y <= 0)
         {
-            playerAnimationController.PlayAnimation("Walking");
+            direction = "Front";
+            playerAnimationController.PlayAnimation("Walking Front");
         }
     }
 
