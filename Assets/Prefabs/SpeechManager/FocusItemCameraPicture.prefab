@@ -137,6 +137,7 @@ MonoBehaviour:
   focusObjectCaption: {fileID: 3426249362508780787}
   newCaptionText: "A gente parecia t\xE3o feliz nesse dia. Bem antes de tudo acontecer."
   focusPoint: {fileID: 3441875456204197633}
+  toggleCameraState: 1
 --- !u!1 &2299871625792527127
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 13637840530351348}
   - component: {fileID: 8771808424114688202}
-  - component: {fileID: 7389593138707260655}
   - component: {fileID: 8618480379274171591}
   m_Layer: 0
   m_Name: FocusItemCameraPicture
@@ -224,14 +224,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7389593138707260655
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299871625792527127}
-  m_Enabled: 1
 --- !u!114 &8618480379274171591
 MonoBehaviour:
   m_ObjectHideFlags: 0

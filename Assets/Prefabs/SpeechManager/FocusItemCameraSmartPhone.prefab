@@ -340,11 +340,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97271f0a0a4754959b15ce58b9ce50f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   focusObjectPrefab: {fileID: 8038175403876196197, guid: 38791a82f285546b1b35523998a92d9e, type: 3}
   focusObjectCaption: {fileID: 947941488252860755}
   newCaptionText: Acho que ele nem viu essas mensagens...
   focusPoint: {fileID: 0}
   toggleCameraState: 0
+  rotationSpeed: 0
 --- !u!1 &8084158734878334059
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5248395033910670097}
   - component: {fileID: 1185072079001917095}
-  - component: {fileID: 1644312875451064297}
   - component: {fileID: 3019987065941134344}
   m_Layer: 0
   m_Name: FocusItemCameraSmartPhone
@@ -433,14 +434,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1644312875451064297
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084158734878334059}
-  m_Enabled: 1
 --- !u!114 &3019987065941134344
 MonoBehaviour:
   m_ObjectHideFlags: 0
