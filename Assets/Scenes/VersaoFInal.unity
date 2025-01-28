@@ -4084,6 +4084,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1281419452744943647, guid: 50023aa41ea3a4123a8cedd48271d78a, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281419452744943647, guid: 50023aa41ea3a4123a8cedd48271d78a, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6248782068779130184, guid: 50023aa41ea3a4123a8cedd48271d78a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4470,6 +4478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 46906426}
     m_Modifications:
+    - target: {fileID: 1252850629514445749, guid: 226affeadb2ee4609983746ef1028a9b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 784a6836ff0b94150b130c80179975c0, type: 3}
     - target: {fileID: 1658874533909934700, guid: 226affeadb2ee4609983746ef1028a9b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2932191

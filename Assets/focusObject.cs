@@ -23,7 +23,6 @@ public class focusObject : MonoBehaviour
     void Start()
     {
         InitializeCaption();
-        SpawnFocusObject();
         CacheCameraReference();
         CacheSmartphoneReference();
         lastCameraState = toggleCameraState;
@@ -38,6 +37,7 @@ public class focusObject : MonoBehaviour
     {
         if (toggleCameraState != lastCameraState)
         {
+            SpawnFocusObject();
             UpdateCameraState();
             lastCameraState = toggleCameraState;
         }
@@ -67,15 +67,26 @@ public class focusObject : MonoBehaviour
 
     private void SpawnFocusObject()
     {
-        if (focusObjectPrefab != null && focusPoint != null)
+        if (toggleCameraState)
         {
-            spawnedObject = Instantiate(
-                focusObjectPrefab,
-                focusPoint.position,
-                focusPoint.rotation,
-                focusPoint
-            );
-            spawnedObject.transform.localScale = focusPoint.localScale;
+            if (focusObjectPrefab != null && focusPoint != null)
+            {
+                spawnedObject = Instantiate(
+                    focusObjectPrefab,
+                    focusPoint.position,
+                    focusPoint.rotation,
+                    focusPoint
+                );
+                spawnedObject.transform.localScale = focusPoint.localScale;
+            }
+        }
+        else
+        {
+            if (spawnedObject != null)
+            {
+                Destroy(spawnedObject);
+                spawnedObject = null;
+            }
         }
     }
 
